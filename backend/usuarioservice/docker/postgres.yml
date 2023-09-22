@@ -1,0 +1,11 @@
+version: '2'
+services:
+  usuarioservice-postgresql:
+    image: postgres:11.5
+    # volumes:
+    #     - ~/volumes/jhipster/srsservice/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=usuarioservice
+      - POSTGRES_PASSWORD=usuarioservice
+    ports:
+      - 5432:5432

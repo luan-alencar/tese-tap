@@ -1,0 +1,7 @@
+version: '2'
+services:
+  usuarioservice-postgresql:
+    extends:
+      file: postgres.yml
+      service: usuarioservice-postgresql
+    container_name: usuarioservice-postgresql
