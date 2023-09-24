@@ -38,4 +38,18 @@ public class UsuarioService {
         return restTemplate.getForObject(BASE_URL_USUARIOS_ID, Usuario.class, parametros);
     }
 
+    public Usuario editar(Usuario usuario) {
+        return this.salvar(usuario);
+    }
+
+    public Usuario salvar(Usuario usuario) {
+        return restTemplate.postForObject(BASE_URL_USUARIOS, usuario, Usuario.class);
+    }
+
+    public void deletar(Long id) {
+        Map<String, Long> parametros = new HashMap<>();
+        parametros.put("id", id);
+
+        restTemplate.delete(BASE_URL_USUARIOS_ID, parametros);
+    }
 }
