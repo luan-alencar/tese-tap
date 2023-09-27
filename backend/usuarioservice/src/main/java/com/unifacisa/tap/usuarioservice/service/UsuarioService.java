@@ -2,11 +2,14 @@ package com.unifacisa.tap.usuarioservice.service;
 
 import com.unifacisa.tap.usuarioservice.domain.Usuario;
 import com.unifacisa.tap.usuarioservice.repository.UsuarioRepository;
+import com.unifacisa.tap.usuarioservice.resource.UsuarioResource;
 import com.unifacisa.tap.usuarioservice.service.dto.UsuarioDTO;
 import com.unifacisa.tap.usuarioservice.service.mapper.UsuarioMapper;
 import javassist.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,7 +38,13 @@ public class UsuarioService {
 
     public UsuarioDTO salvarUsuario(UsuarioDTO dto) {
         Usuario usuario = UsuarioMapper.INSTANCE.DTOtoUsuario(dto);
-        usuarioRepository.save(usuario);
+        usuario = usuarioRepository.save(usuario); // Salva o usuário e obtém o usuário com ID atribuído.
+
+//        Link link = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(UsuarioResource.class)
+//                        .getUsuarioPorId(usuario.getId()))
+//                .withSelfRel();
+//        Link link = Link.of("https://localhost:8080/usuarios/{id}" + usuario.getId()).withSelfRel();
+
         return UsuarioMapper.INSTANCE.usuarioToDTO(usuario);
     }
 

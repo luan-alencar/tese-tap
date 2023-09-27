@@ -3,7 +3,6 @@ package com.unifacisa.tap.usuarioservice.service.mapper;
 import com.unifacisa.tap.usuarioservice.domain.Usuario;
 import com.unifacisa.tap.usuarioservice.service.dto.UsuarioDTO;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
