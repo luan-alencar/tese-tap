@@ -4,11 +4,10 @@ import com.unifacisa.tap.usuarioservice.repository.ProdutoRepository;
 import com.unifacisa.tap.usuarioservice.service.ProdutoService;
 import com.unifacisa.tap.usuarioservice.service.dto.ProdutoDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 import static com.unifacisa.tap.usuarioservice.utils.ConstantsUtils.PRODUTOS_ENDPOINT;
 
@@ -21,8 +20,8 @@ public class ProdutoResource {
     private final ProdutoService produtoService;
 
     @GetMapping
-    public ResponseEntity<List<ProdutoDTO>> listarProdutos() {
-        List<ProdutoDTO> produtos = produtoService.listarProdutos();
+    public ResponseEntity<PagedModel<ProdutoDTO>> listarProdutos(int page, int size) {
+        PagedModel<ProdutoDTO> produtos = produtoService.listarProdutos();
         return ResponseEntity.ok(produtos);
     }
 
